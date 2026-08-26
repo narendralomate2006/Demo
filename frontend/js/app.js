@@ -1,5 +1,10 @@
 // ── CONFIG ─────────────────────────────────────────────────
-const API_BASE_URL = 'http://127.0.0.1:8000';
+// Auto-detect: use localhost in development, Render URL in production
+const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+const API_BASE_URL = IS_LOCAL
+    ? 'http://127.0.0.1:8000'
+    : 'https://railway-crowd-monitor.onrender.com';  // ← UPDATE this after deploying on Render
+
 
 // ── CHARTS ─────────────────────────────────────────────────
 let hourlyTrendChart = null;
